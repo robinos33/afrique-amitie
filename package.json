@@ -1,0 +1,14 @@
+{
+  "name": "afrique-amitie",
+  "version": "0.1.0",
+  "description": "Site statique de l'association Afrique Amitié — héritage 1994-2026.",
+  "private": true,
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy",
+    "clean": "rm -rf _site"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.0.0"
+  }
+}

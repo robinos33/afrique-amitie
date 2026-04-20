@@ -7,6 +7,7 @@ package-lock.json
 yarn.lock
 
 # Build output
+_site/
 dist/
 build/
 .cache/

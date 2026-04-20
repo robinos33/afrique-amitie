@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>{{ title }}</title>
+<meta name="description" content="{{ description }}"/>
+<link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+          "surface": "#fcf9f8",
+          "secondary": "#7a5900",
+          "surface-variant": "#e4e2e1",
+          "on-tertiary-fixed": "#410002",
+          "on-error-container": "#93000a",
+          "on-primary-fixed-variant": "#23501e",
+          "on-surface-variant": "#42493e",
+          "surface-container-highest": "#e4e2e1",
+          "primary": "#154212",
+          "inverse-surface": "#303030",
+          "on-tertiary": "#ffffff",
+          "surface-container": "#f0eded",
+          "on-primary-fixed": "#002201",
+          "tertiary": "#790009",
+          "on-primary": "#ffffff",
+          "on-secondary-container": "#6b4d00",
+          "on-surface": "#1b1c1c",
+          "outline": "#72796e",
+          "secondary-fixed-dim": "#fdbc13",
+          "error-container": "#ffdad6",
+          "tertiary-fixed-dim": "#ffb4ab",
+          "surface-bright": "#fcf9f8",
+          "inverse-on-surface": "#f3f0f0",
+          "surface-tint": "#3b6934",
+          "background": "#fcf9f8",
+          "secondary-fixed": "#ffdea3",
+          "surface-container-low": "#f6f3f2",
+          "surface-dim": "#dcd9d9",
+          "primary-fixed": "#bcf0ae",
+          "on-background": "#1b1c1c",
+          "outline-variant": "#c2c9bb",
+          "primary-container": "#2d5a27",
+          "on-secondary-fixed-variant": "#5d4200",
+          "on-secondary": "#ffffff",
+          "tertiary-container": "#a50010",
+          "on-secondary-fixed": "#261900",
+          "on-error": "#ffffff",
+          "tertiary-fixed": "#ffdad6",
+          "surface-container-lowest": "#ffffff",
+          "primary-fixed-dim": "#a1d494",
+          "secondary-container": "#fdbc13",
+          "on-primary-container": "#9dd090",
+          "on-tertiary-fixed-variant": "#93000d",
+          "surface-container-high": "#eae7e7",
+          "error": "#ba1a1a",
+          "on-tertiary-container": "#ffaea6",
+          "inverse-primary": "#a1d494"
+        },
+        "borderRadius": {
+          "DEFAULT": "0.125rem",
+          "lg": "0.25rem",
+          "xl": "0.5rem",
+          "full": "0.75rem"
+        },
+        "fontFamily": {
+          "headline": ["Epilogue"],
+          "body": ["Plus Jakarta Sans"],
+          "label": ["Plus Jakarta Sans"]
+        }
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 2rem;
+  }
+  .tonal-transition {
+    transition: background-color 0.3s ease;
+  }
+
+  /* --- Rotating words hero --- */
+  .words-wrapper {
+    display: inline-block;
+    overflow: hidden;
+    height: 1.1em;
+    vertical-align: top;
+  }
+  .words-rotate {
+    display: block;
+  }
+  .words-rotate span {
+    display: block;
+    line-height: 1.1;
+  }
+  /* 6 mots + 1 doublon = 7 spans, 18s total, 3s/mot */
+  @keyframes wordsUp {
+    0%      { transform: translateY(0);        animation-timing-function: linear; }
+    13%     { transform: translateY(0);        animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    16.67%  { transform: translateY(-1.1em);   animation-timing-function: linear; }
+    29.67%  { transform: translateY(-1.1em);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    33.33%  { transform: translateY(-2.2em);   animation-timing-function: linear; }
+    46.33%  { transform: translateY(-2.2em);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    50%     { transform: translateY(-3.3em);   animation-timing-function: linear; }
+    63%     { transform: translateY(-3.3em);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    66.67%  { transform: translateY(-4.4em);   animation-timing-function: linear; }
+    79.67%  { transform: translateY(-4.4em);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    83.33%  { transform: translateY(-5.5em);   animation-timing-function: linear; }
+    96.33%  { transform: translateY(-5.5em);   animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1); }
+    100%    { transform: translateY(-6.6em); }
+  }
+  .words-rotate {
+    animation: wordsUp 18s infinite;
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body selection:bg-secondary-container">
+
+{% include "partials/nav.njk" %}
+
+<main>
+{{ content | safe }}
+</main>
+
+{% include "partials/footer.njk" %}
+
+</body>
+</html>

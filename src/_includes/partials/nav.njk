@@ -1,0 +1,21 @@
+{# Navigation principale. La page active est déterminée par `activeNav` (défini dans la front matter). #}
+{% macro navLink(label, href, id, activeNav) %}
+  {% if id == activeNav %}
+    <a class="font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-xs text-[#154212] dark:text-emerald-400 border-b-2 border-[#FDBC13] pb-1 transition-all duration-300" href="{{ href }}">{{ label }}</a>
+  {% else %}
+    <a class="font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-xs text-stone-500 dark:text-stone-400 pb-1 hover:text-[#7A5900] dark:hover:text-amber-400 transition-all duration-300" href="{{ href }}">{{ label }}</a>
+  {% endif %}
+{% endmacro %}
+
+<nav class="fixed top-0 w-full z-50 bg-[#FCF9F8]/90 dark:bg-stone-950/70 backdrop-blur-md">
+  <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
+    <a class="font-['Epilogue'] font-bold text-2xl tracking-tighter text-[#154212] dark:text-emerald-500" href="/">Afrique Amitié</a>
+    <div class="hidden md:flex items-center space-x-12">
+      {{ navLink("Accueil",    "/",            "accueil",    activeNav) }}
+      {{ navLink("Projets",    "/projets/",    "projets",    activeNav) }}
+      {{ navLink("Historique", "/historique/", "historique", activeNav) }}
+      {{ navLink("Contact",    "/contact/",    "contact",    activeNav) }}
+    </div>
+    <div class="flex items-center gap-4"></div>
+  </div>
+</nav>
