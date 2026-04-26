@@ -4,7 +4,7 @@
   "description": "Site statique de l'association Afrique Amitié — héritage 1994-2026.",
   "private": true,
   "scripts": {
-    "start": "eleventy --serve",
+    "start": "eleventy --serve --port=3000",
     "build": "eleventy",
     "clean": "rm -rf _site"
   },
