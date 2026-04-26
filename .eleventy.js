@@ -5,6 +5,15 @@ module.exports = function (eleventyConfig) {
   // Raccourci {% year %} pour afficher l'année courante (utile dans le footer)
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
 
+  // Filtre de date en français
+  eleventyConfig.addFilter("dateF", (date) => {
+    return new Date(date).toLocaleDateString("fr-FR", {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  });
+
   return {
     dir: {
       input: "src",

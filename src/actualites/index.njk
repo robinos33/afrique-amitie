@@ -1,0 +1,50 @@
+---
+layout: base.njk
+title: "Actualités | Afrique Amitié"
+description: "Toutes les actualités d'Afrique Amitié — événements, actions de sensibilisation et projets au Mali."
+activeNav: "actualites"
+---
+
+<section class="pt-32 pb-24 max-w-7xl mx-auto px-8">
+
+  <!-- En-tête -->
+  <div class="mb-16">
+    <span class="font-label uppercase tracking-[0.2em] text-tertiary font-semibold text-xs mb-4 block">Chroniques d'activités</span>
+    <h1 class="font-headline text-4xl md:text-5xl text-primary font-bold tracking-tight">Actualités</h1>
+  </div>
+
+  <!-- Grille d'articles -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+    {% set articles = collections.actualites | reverse %}
+    {% for article in articles %}
+    <article class="group">
+      <a href="{{ article.url }}" class="block aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
+        {% if article.data.cardImage %}
+        <img
+          alt="{{ article.data.title }}"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          src="{{ article.data.cardImage }}"
+        />
+        {% endif %}
+        {% if article.data.cardLabel %}
+        <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary">{{ article.data.cardLabel }}</div>
+        {% endif %}
+      </a>
+      <span class="text-xs font-label text-stone-500 uppercase tracking-widest block mb-2">
+        {{ article.date | dateF }}
+      </span>
+      <h2 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight group-hover:text-secondary transition-colors">
+        {{ article.data.title | replace(" | Afrique Amitié", "") }}
+      </h2>
+      {% if article.data.cardExcerpt %}
+      <p class="text-on-surface-variant text-sm leading-relaxed mb-6">{{ article.data.cardExcerpt }}</p>
+      {% endif %}
+      <a class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline" href="{{ article.url }}">
+        Lire la suite
+        <span class="material-symbols-outlined text-sm">north_east</span>
+      </a>
+    </article>
+    {% endfor %}
+  </div>
+
+</section>
