@@ -55,11 +55,16 @@ activeNav: ""
             class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"></textarea>
         </div>
 
-        <button type="submit"
-          class="bg-primary text-on-primary px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-3">
-          Envoyer le message
-          <span class="material-symbols-outlined text-base">arrow_forward</span>
-        </button>
+        <div class="relative inline-block group">
+          <button type="submit" disabled
+            class="bg-primary text-on-primary px-8 py-4 rounded font-bold uppercase tracking-widest text-sm opacity-40 cursor-not-allowed inline-flex items-center gap-3">
+            Envoyer le message
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </button>
+          <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-inverse-surface text-inverse-on-surface text-xs font-medium px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+            Site en maintenance, revenez plus tard
+          </span>
+        </div>
       </form>
     </div>
 
