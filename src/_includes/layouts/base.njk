@@ -126,9 +126,37 @@
   .words-rotate {
     animation: wordsUp 18s infinite;
   }
+
+  /* --- Maintenance banner marquee --- */
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
 </style>
 </head>
 <body class="bg-surface text-on-surface font-body selection:bg-secondary-container">
+
+<!-- Bandeau maintenance -->
+<div class="fixed top-0 w-full z-[60] bg-secondary-container overflow-hidden" style="height:36px;">
+  <div class="marquee-track h-full items-center flex">
+    {% set segment %}
+      <span class="flex items-center gap-3 px-8 text-on-secondary-fixed font-label text-xs font-semibold uppercase tracking-widest whitespace-nowrap">
+        <span class="material-symbols-outlined text-sm" style="font-variation-settings:'FILL' 1;">construction</span>
+        Site en maintenance — récupération des archives en cours — nous nous excusons du désagrément
+        <span class="text-secondary mx-4">◆</span>
+      </span>
+    {% endset %}
+    {{ segment | safe }}{{ segment | safe }}{{ segment | safe }}{{ segment | safe }}{{ segment | safe }}{{ segment | safe }}
+  </div>
+</div>
 
 {% include "partials/nav.njk" %}
 
