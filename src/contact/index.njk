@@ -1,0 +1,93 @@
+---
+layout: base.njk
+title: "Contact | Afrique Amitié"
+description: "Contactez l'association Afrique Amitié pour toute demande administrative ou archive historique."
+activeNav: ""
+---
+
+<article class="pt-32 pb-24 max-w-7xl mx-auto px-8">
+
+  <div class="mb-16">
+    <span class="font-label uppercase tracking-[0.2em] text-secondary font-semibold text-xs mb-4 block">Continuité administrative</span>
+    <h1 class="font-headline text-5xl md:text-6xl text-primary font-bold tracking-tight mb-6 leading-tight">
+      Contactez-nous
+    </h1>
+    <p class="text-on-surface-variant text-lg leading-relaxed max-w-xl">
+      Bien que l'association Afrique Amitié ait cessé ses activités opérationnelles en 2026, nous maintenons une veille pour toute demande administrative ou archive historique.
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
+
+    <!-- Formulaire -->
+    <div class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-8 md:p-10">
+      <form method="POST" action="">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+          <div>
+            <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="nom">Nom complet</label>
+            <input type="text" id="nom" name="nom" placeholder="Jean Dupont" required
+              class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm"/>
+          </div>
+          <div>
+            <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="email">Adresse email</label>
+            <input type="email" id="email" name="email" placeholder="jean.dupont@exemple.com" required
+              class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm"/>
+          </div>
+        </div>
+
+        <div class="mb-6">
+          <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="sujet">Sujet de la demande</label>
+          <div class="relative">
+            <select id="sujet" name="sujet"
+              class="w-full bg-surface-container rounded px-4 py-3 text-on-surface border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm appearance-none pr-10">
+              <option>Demande d'archives</option>
+              <option>Question administrative</option>
+              <option>Témoignage / souvenir</option>
+              <option>Autre</option>
+            </select>
+            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg pointer-events-none">expand_more</span>
+          </div>
+        </div>
+
+        <div class="mb-8">
+          <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="message">Votre message</label>
+          <textarea id="message" name="message" placeholder="Comment pouvons-nous vous aider ?" rows="6" required
+            class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"></textarea>
+        </div>
+
+        <button type="submit"
+          class="bg-primary text-on-primary px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-3">
+          Envoyer le message
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
+      </form>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="lg:col-span-2 space-y-8">
+
+      <!-- Carte statut -->
+      <div class="bg-secondary-container rounded-xl p-6">
+        <span class="material-symbols-outlined text-secondary text-3xl mb-3 block" style="font-variation-settings: 'FILL' 1;">info</span>
+        <h2 class="font-headline text-lg font-bold text-on-secondary-fixed mb-2">Statut de l'association</h2>
+        <p class="text-on-secondary-fixed/80 text-sm leading-relaxed">
+          Conformément à la clôture de nos activités, les délais de réponse peuvent être plus longs. Nous traitons les demandes par ordre de priorité administrative.
+        </p>
+      </div>
+
+      <!-- Siège historique -->
+      <div class="flex items-start gap-4">
+        <div class="w-10 h-10 bg-surface-container rounded-full flex items-center justify-center flex-shrink-0 mt-0.5">
+          <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">location_on</span>
+        </div>
+        <div>
+          <span class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-1 block">Siège historique</span>
+          <p class="font-bold text-on-surface mb-1">Paris, France</p>
+          <p class="text-sm text-on-surface-variant leading-relaxed">Uniquement pour correspondance administrative archivée.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</article>
