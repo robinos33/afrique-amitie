@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "afrique-amitie",
+  "compatibility_date": "2026-05-10",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "_site",
+    "not_found_handling": "404-page"
+  },
+  "compatibility_flags": [
+    "nodejs_compat"
+  ]
+}
