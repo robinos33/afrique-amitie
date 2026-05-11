@@ -7,18 +7,110 @@
   {% endif %}
 {% endmacro %}
 
+{% macro mobileNavLink(label, href, id, activeNav) %}
+  <a href="{{ href }}"
+     class="mobile-nav-link font-['Epilogue'] font-bold text-4xl tracking-tight transition-all duration-200
+     {% if id == activeNav %}text-[#154212]{% else %}text-stone-500 hover:text-[#154212]{% endif %}">
+    {{ label }}
+    {% if id == activeNav %}<span class="inline-block w-2 h-2 rounded-full bg-[#FDBC13] ml-2 mb-1"></span>{% endif %}
+  </a>
+{% endmacro %}
+
 <nav class="fixed top-9 w-full z-50 bg-[#FCF9F8]/90 dark:bg-stone-950/70 backdrop-blur-md">
   <div class="flex justify-between items-center w-full px-8 py-6 max-w-screen-2xl mx-auto">
-    <a class="flex items-center gap-3" href="/">
+
+    <a class="flex items-center gap-3 relative z-10" href="/">
       <img src="/assets/logo-afrique-amitie.png" alt="Logo Afrique Amitié" class="h-9 w-9 object-contain"/>
       <span class="font-['Epilogue'] font-bold text-2xl tracking-tighter text-[#154212] dark:text-emerald-500">Afrique Amitié</span>
     </a>
+
+    <!-- Desktop menu -->
     <div class="hidden md:flex items-center space-x-12">
       {{ navLink("Accueil",    "/",             "accueil",    activeNav) }}
       {{ navLink("Actualités", "/actualites/", "actualites", activeNav) }}
       {{ navLink("Projets",    "/projets/",    "projets",    activeNav) }}
       {{ navLink("Historique", "/historique/", "historique", activeNav) }}
     </div>
-    <div class="flex items-center gap-4"></div>
+
+    <!-- Burger button (mobile only) -->
+    <button id="burger-btn" class="md:hidden relative z-10 w-10 h-10 flex flex-col justify-center items-center gap-[6px] focus:outline-none" aria-label="Menu" aria-expanded="false">
+      <span class="burger-bar block w-6 h-[2px] bg-[#154212] rounded-full origin-center transition-all duration-300"></span>
+      <span class="burger-bar block w-6 h-[2px] bg-[#154212] rounded-full origin-center transition-all duration-300"></span>
+      <span class="burger-bar block w-6 h-[2px] bg-[#154212] rounded-full origin-center transition-all duration-300"></span>
+    </button>
+
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div id="mobile-menu"
+       class="md:hidden absolute top-full left-0 w-full bg-[#FCF9F8] border-t border-[#C2C9BB]/20 shadow-xl
+              overflow-hidden transition-all duration-300 ease-in-out
+              max-h-0 opacity-0 pointer-events-none">
+    <div class="flex flex-col items-center justify-center gap-8 py-16 px-8">
+      {{ mobileNavLink("Accueil",    "/",             "accueil",    activeNav) }}
+      {{ mobileNavLink("Actualités", "/actualites/", "actualites", activeNav) }}
+      {{ mobileNavLink("Projets",    "/projets/",    "projets",    activeNav) }}
+      {{ mobileNavLink("Historique", "/historique/", "historique", activeNav) }}
+      <a href="/contact/" class="mt-4 bg-[#154212] text-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity">
+        Nous contacter
+      </a>
+    </div>
   </div>
 </nav>
+
+<style>
+  /* Burger → croix */
+  #burger-btn.open .burger-bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+  #burger-btn.open .burger-bar:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  #burger-btn.open .burger-bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+
+  /* Menu ouvert */
+  #mobile-menu.open {
+    max-height: 100vh;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Entrée des liens en cascade */
+  #mobile-menu.open .mobile-nav-link {
+    animation: slideUp 0.3s ease forwards;
+  }
+  #mobile-menu.open .mobile-nav-link:nth-child(1) { animation-delay: 0.05s; opacity: 0; }
+  #mobile-menu.open .mobile-nav-link:nth-child(2) { animation-delay: 0.1s;  opacity: 0; }
+  #mobile-menu.open .mobile-nav-link:nth-child(3) { animation-delay: 0.15s; opacity: 0; }
+  #mobile-menu.open .mobile-nav-link:nth-child(4) { animation-delay: 0.2s;  opacity: 0; }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('burger-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', isOpen);
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+  });
+
+  // Fermer au clic sur un lien
+  menu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      btn.classList.remove('open');
+      btn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    });
+  });
+</script>
