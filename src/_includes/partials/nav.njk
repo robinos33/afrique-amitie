@@ -49,7 +49,32 @@
       </div>
 
       {{ navLink("Actualités", "/actualites/", "actualites", activeNav) }}
-      {{ navLink("Projets",    "/projets/",    "projets",    activeNav) }}
+
+      <!-- Dropdown Projets -->
+      <div class="relative group">
+        <button class="font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-xs pb-1 flex items-center gap-1 transition-all duration-300
+          {% if activeNav == 'projets' %}text-[#154212] border-b-2 border-[#FDBC13]{% else %}text-stone-500 hover:text-[#7A5900]{% endif %}">
+          Projets
+          <span class="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute top-full right-0 pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+          <div class="bg-[#FCF9F8] border border-[#C2C9BB]/30 rounded-xl shadow-xl py-2 min-w-[240px]">
+            <a href="/projets/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Tous les projets</a>
+            <div class="border-t border-[#C2C9BB]/20 my-1"></div>
+            <a href="/projets/renovation-csc-yaguine/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Rénovation CSC Yaguiné</a>
+            <a href="/projets/sante/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Santé</a>
+            <a href="/projets/eau/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Eau</a>
+            <a href="/projets/assainissement/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Assainissement</a>
+            <a href="/projets/adduction-eau-bidadji/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-600{% endif %}">Adduction d'eau Bidadji</a>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Burger button (mobile only) -->
@@ -84,7 +109,22 @@
       </div>
 
       {{ mobileNavLink("Actualités", "/actualites/", "actualites", activeNav) }}
-      {{ mobileNavLink("Projets",    "/projets/",    "projets",    activeNav) }}
+
+      <!-- Mobile : groupe Projets -->
+      <div class="flex flex-col items-center gap-3 w-full">
+        <a href="/projets/" class="mobile-nav-link font-['Epilogue'] font-bold text-4xl tracking-tight
+          {% if activeNav == 'projets' %}text-[#154212]{% else %}text-stone-500 hover:text-[#154212]{% endif %}">
+          Projets
+          {% if activeNav == 'projets' %}<span class="inline-block w-2 h-2 rounded-full bg-[#FDBC13] ml-2 mb-1"></span>{% endif %}
+        </a>
+        <div class="flex flex-col items-center gap-2 w-full pl-4 border-l-2 border-[#FDBC13]/40">
+          <a href="/projets/renovation-csc-yaguine/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Rénovation CSC</a>
+          <a href="/projets/sante/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Santé</a>
+          <a href="/projets/eau/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Eau</a>
+          <a href="/projets/assainissement/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Assainissement</a>
+          <a href="/projets/adduction-eau-bidadji/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Adduction eau Bidadji</a>
+        </div>
+      </div>
       <a href="/contact/" class="mt-4 bg-[#154212] text-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity">
         Nous contacter
       </a>
