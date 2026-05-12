@@ -26,10 +26,30 @@
 
     <!-- Desktop menu -->
     <div class="hidden md:flex items-center space-x-12">
-      {{ navLink("Accueil",    "/",             "accueil",    activeNav) }}
+
+      <!-- Dropdown Notre association -->
+      <div class="relative group">
+        <button class="font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-xs pb-1 flex items-center gap-1 transition-all duration-300
+          {% if activeNav == 'notre-association' %}text-[#154212] border-b-2 border-[#FDBC13]{% else %}text-stone-500 hover:text-[#7A5900]{% endif %}">
+          Notre association
+          <span class="material-symbols-outlined text-[14px] transition-transform duration-200 group-hover:rotate-180">expand_more</span>
+        </button>
+        <div class="absolute top-full left-1/2 -translate-x-1/2 pt-3 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all duration-200 z-50">
+          <div class="bg-[#FCF9F8] border border-[#C2C9BB]/30 rounded-xl shadow-xl py-2 min-w-[200px]">
+            <a href="/association/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'notre-association' %}text-[#154212]{% else %}text-stone-600{% endif %}">L'association</a>
+            <a href="/historique/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'notre-association' %}text-[#154212]{% else %}text-stone-600{% endif %}">Historique</a>
+            <a href="/bulletins/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'notre-association' %}text-[#154212]{% else %}text-stone-600{% endif %}">Bulletins</a>
+            <a href="/mot-de-la-presidente/" class="block px-5 py-3 text-xs font-medium uppercase tracking-widest hover:bg-[#F0EDE9] transition-colors
+              {% if activeNav == 'notre-association' %}text-[#154212]{% else %}text-stone-600{% endif %}">Le mot de la Présidente</a>
+          </div>
+        </div>
+      </div>
+
       {{ navLink("Actualités", "/actualites/", "actualites", activeNav) }}
       {{ navLink("Projets",    "/projets/",    "projets",    activeNav) }}
-      {{ navLink("Historique", "/historique/", "historique", activeNav) }}
     </div>
 
     <!-- Burger button (mobile only) -->
@@ -46,11 +66,25 @@
        class="md:hidden absolute top-full left-0 w-full bg-[#FCF9F8] border-t border-[#C2C9BB]/20 shadow-xl
               overflow-hidden transition-all duration-300 ease-in-out
               max-h-0 opacity-0 pointer-events-none">
-    <div class="flex flex-col items-center justify-center gap-8 py-16 px-8">
-      {{ mobileNavLink("Accueil",    "/",             "accueil",    activeNav) }}
+    <div class="flex flex-col items-center justify-center gap-6 py-12 px-8">
+
+      <!-- Mobile : groupe Notre association -->
+      <div class="flex flex-col items-center gap-3 w-full">
+        <span class="mobile-nav-link font-['Epilogue'] font-bold text-4xl tracking-tight
+          {% if activeNav == 'notre-association' %}text-[#154212]{% else %}text-stone-500{% endif %}">
+          Notre association
+          {% if activeNav == 'notre-association' %}<span class="inline-block w-2 h-2 rounded-full bg-[#FDBC13] ml-2 mb-1"></span>{% endif %}
+        </span>
+        <div class="flex flex-col items-center gap-2 w-full pl-4 border-l-2 border-[#FDBC13]/40">
+          <a href="/association/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">L'association</a>
+          <a href="/historique/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Historique</a>
+          <a href="/bulletins/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Bulletins</a>
+          <a href="/mot-de-la-presidente/" class="mobile-sub-link font-['Plus_Jakarta_Sans'] font-medium uppercase tracking-widest text-sm text-stone-500 hover:text-[#154212] transition-colors">Le mot de la Présidente</a>
+        </div>
+      </div>
+
       {{ mobileNavLink("Actualités", "/actualites/", "actualites", activeNav) }}
       {{ mobileNavLink("Projets",    "/projets/",    "projets",    activeNav) }}
-      {{ mobileNavLink("Historique", "/historique/", "historique", activeNav) }}
       <a href="/contact/" class="mt-4 bg-[#154212] text-white px-8 py-4 rounded font-bold uppercase tracking-widest text-sm hover:opacity-90 transition-opacity">
         Nous contacter
       </a>
