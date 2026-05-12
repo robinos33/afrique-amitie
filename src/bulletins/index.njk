@@ -1,0 +1,94 @@
+---
+layout: base.njk
+title: "Bulletins d'expédition | Afrique Amitié"
+description: "Retrouvez les bulletins et comptes rendus des expéditions d'Afrique Amitié au Mali depuis 1997."
+activeNav: "notre-association"
+---
+
+<article class="pt-32 pb-24 max-w-4xl mx-auto px-8">
+
+  <div class="mb-12">
+    <span class="font-label uppercase tracking-[0.2em] text-secondary font-semibold text-xs mb-4 block">Notre association · Historique</span>
+    <h1 class="font-headline text-4xl md:text-5xl text-primary font-bold tracking-tight mb-6 leading-tight">
+      Bulletins d'expédition
+    </h1>
+    <p class="text-on-surface-variant text-xl leading-relaxed">
+      Comptes rendus des actions menées sur le terrain depuis 1997, en PDF et en ligne.
+    </p>
+  </div>
+
+  <div class="space-y-12">
+
+    <!-- Comptes rendus en ligne -->
+    <section>
+      <h2 class="font-headline text-2xl text-primary font-bold mb-6">Comptes rendus en ligne</h2>
+      <div class="grid gap-4">
+        <a href="/bulletins/expedition-fevrier-2012/"
+           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
+          <div>
+            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2012</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — bilharziose, santé, école</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
+        </a>
+        <a href="/bulletins/expedition-fevrier-2014/"
+           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
+          <div>
+            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2014</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — santé, éducation, déchets</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Bulletins PDF -->
+    <section>
+      <h2 class="font-headline text-2xl text-primary font-bold mb-6">Bulletins PDF</h2>
+      <div class="grid gap-3">
+
+        <a href="/assets/bulletin_15-mai2016.pdf" target="_blank"
+           class="group flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-xl">picture_as_pdf</span>
+          <span class="text-on-surface group-hover:text-primary transition-colors font-medium">Bulletin n°15 — mai 2016</span>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto text-lg">download</span>
+        </a>
+
+        <a href="/assets/bulletin_14_fev2015.pdf" target="_blank"
+           class="group flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-xl">picture_as_pdf</span>
+          <span class="text-on-surface group-hover:text-primary transition-colors font-medium">Bulletin n°14 — février 2015</span>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto text-lg">download</span>
+        </a>
+
+        <a href="/assets/bulletin_13_2014.pdf" target="_blank"
+           class="group flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-xl">picture_as_pdf</span>
+          <span class="text-on-surface group-hover:text-primary transition-colors font-medium">Bulletin n°13 — 2014</span>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto text-lg">download</span>
+        </a>
+
+        <a href="/assets/bulletin_11.pdf" target="_blank"
+           class="group flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-xl">picture_as_pdf</span>
+          <span class="text-on-surface group-hover:text-primary transition-colors font-medium">Bulletin n°11</span>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto text-lg">download</span>
+        </a>
+
+        {% for n in [7, 6, 5, 4, 3, 2, 1] %}
+        <a href="/assets/bulletin_{{ n }}.pdf" target="_blank"
+           class="group flex items-center gap-4 p-4 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-xl">picture_as_pdf</span>
+          <span class="text-on-surface group-hover:text-primary transition-colors font-medium">Bulletin n°{{ n }}</span>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto text-lg">download</span>
+        </a>
+        {% endfor %}
+
+      </div>
+    </section>
+
+  </div>
+
+</article>
