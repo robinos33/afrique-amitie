@@ -49,55 +49,80 @@ activeNav: "accueil"
         <div class="hidden md:block h-px flex-1 mx-12 bg-outline-variant/30 mb-4"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+
         <!-- Article 1 : Vide-grenier -->
-        <article class="group">
-          <a href="/actualites/vide-grenier-bagatelle/" class="block aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
+        <article class="group relative flex flex-col">
+          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
             <img alt="Vide-grenier à Bagatelle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/vide-grenier-card.png"/>
             <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary">Événement</div>
-          </a>
+          </div>
           <span class="text-xs font-label text-stone-500 uppercase tracking-widest block mb-2">21 Mars 2025</span>
-          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight group-hover:text-secondary transition-colors">Vide-grenier à Bagatelle</h3>
-          <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight">
+            <a href="/actualites/vide-grenier-bagatelle/" class="group-hover:text-secondary transition-colors after:absolute after:inset-0">Vide-grenier à Bagatelle</a>
+          </h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed flex-1">
             Dimanche 6 avril, de 9h à 17h au Centre social de Bagatelle — chineurs et curieux bienvenus pour une belle matinée solidaire.
           </p>
-          <a class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline" href="/actualites/vide-grenier-bagatelle/">
-            Lire la suite
-            <span class="material-symbols-outlined text-sm">north_east</span>
-          </a>
+          <div class="mt-6 relative z-10 pointer-events-none">
+            <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline">
+              Lire la suite
+              <span class="material-symbols-outlined text-sm">north_east</span>
+            </span>
+          </div>
         </article>
+
         <!-- Article 2 : École -->
-        <article class="group">
-          <a href="/actualites/intervention-ecole-villenave/" class="block aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
+        <article class="group relative flex flex-col">
+          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
             <img alt="Intervention école primaire Villenave d'Ornon" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/ecole-card.png"/>
             <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary">Éducation</div>
-          </a>
+          </div>
           <span class="text-xs font-label text-stone-500 uppercase tracking-widest block mb-2">21 Mars 2025</span>
-          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight group-hover:text-secondary transition-colors">Intervention en école primaire à Villenave d'Ornon</h3>
-          <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight">
+            <a href="/actualites/intervention-ecole-villenave/" class="group-hover:text-secondary transition-colors after:absolute after:inset-0">Intervention en école primaire à Villenave d'Ornon</a>
+          </h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed flex-1">
             20 photos de la vie à Yaguiné présentées à des élèves de 8 ans — une heure et demie d'échanges sincères et de questions enthousiastes.
           </p>
-          <a class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline" href="/actualites/intervention-ecole-villenave/">
-            Lire la suite
-            <span class="material-symbols-outlined text-sm">north_east</span>
-          </a>
+          <div class="mt-6 relative z-10 pointer-events-none">
+            <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline">
+              Lire la suite
+              <span class="material-symbols-outlined text-sm">north_east</span>
+            </span>
+          </div>
         </article>
+
         <!-- Article 3 : Loto -->
-        <article class="group">
-          <a href="/actualites/loto-bagatelle/" class="block aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
+        <article class="group relative flex flex-col">
+          <div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
             <img alt="Loto à Bagatelle" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" src="/assets/loto-card.png"/>
             <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-secondary">Événement</div>
-          </a>
+          </div>
           <span class="text-xs font-label text-stone-500 uppercase tracking-widest block mb-2">25 Janvier 2025</span>
-          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight group-hover:text-secondary transition-colors">Loto à Bagatelle</h3>
-          <p class="text-on-surface-variant text-sm leading-relaxed mb-6">
+          <h3 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight">
+            <a href="/actualites/loto-bagatelle/" class="group-hover:text-secondary transition-colors after:absolute after:inset-0">Loto à Bagatelle</a>
+          </h3>
+          <p class="text-on-surface-variant text-sm leading-relaxed flex-1">
             Dimanche 9 février à 15h, loto convivial au Centre social de Bagatelle — avec stand pâtisserie et bonne humeur garantie.
           </p>
-          <a class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline" href="/actualites/loto-bagatelle/">
-            Lire la suite
-            <span class="material-symbols-outlined text-sm">north_east</span>
-          </a>
+          <div class="mt-6 relative z-10 pointer-events-none">
+            <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline">
+              Lire la suite
+              <span class="material-symbols-outlined text-sm">north_east</span>
+            </span>
+          </div>
         </article>
+
       </div>
+
+      <!-- Lien toutes les actualités -->
+      <div class="mt-16 text-center">
+        <a href="/actualites/" class="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-widest text-secondary hover:gap-4 transition-all">
+          Voir toutes les actualités
+          <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+      </div>
+
     </div>
   </section>
 
