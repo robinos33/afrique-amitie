@@ -17,8 +17,8 @@ activeNav: "actualites"
   <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
     {% set articles = collections.actualites | reverse %}
     {% for article in articles %}
-    <article class="group">
-      <a href="{{ article.url }}" class="block aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
+    <article class="group relative flex flex-col">
+      <div class="aspect-[4/5] overflow-hidden rounded-xl mb-6 bg-surface-dim relative">
         {% if article.data.cardImage %}
         <img
           alt="{{ article.data.title }}"
@@ -29,20 +29,22 @@ activeNav: "actualites"
         {% if article.data.cardLabel %}
         <div class="absolute top-4 left-4 bg-surface/90 backdrop-blur px-3 py-1 rounded text-[10px] font-bold uppercase tracking-widest text-primary">{{ article.data.cardLabel }}</div>
         {% endif %}
-      </a>
+      </div>
       <span class="text-xs font-label text-stone-500 uppercase tracking-widest block mb-2">
         {{ article.date | dateF }}
       </span>
-      <h2 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight group-hover:text-secondary transition-colors">
-        {{ article.data.title | replace(" | Afrique Amitié", "") }}
+      <h2 class="font-headline text-2xl text-primary font-bold mb-4 leading-tight">
+        <a href="{{ article.url }}" class="group-hover:text-secondary transition-colors after:absolute after:inset-0">{{ article.data.title | replace(" | Afrique Amitié", "") }}</a>
       </h2>
       {% if article.data.cardExcerpt %}
-      <p class="text-on-surface-variant text-sm leading-relaxed mb-6">{{ article.data.cardExcerpt }}</p>
+      <p class="text-on-surface-variant text-sm leading-relaxed flex-1">{{ article.data.cardExcerpt }}</p>
       {% endif %}
-      <a class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline" href="{{ article.url }}">
-        Lire la suite
-        <span class="material-symbols-outlined text-sm">north_east</span>
-      </a>
+      <div class="mt-6 relative z-10 pointer-events-none">
+        <span class="text-xs font-bold uppercase tracking-widest text-primary flex items-center gap-2 group-hover:underline">
+          Lire la suite
+          <span class="material-symbols-outlined text-sm">north_east</span>
+        </span>
+      </div>
     </article>
     {% endfor %}
   </div>
