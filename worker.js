@@ -2,6 +2,13 @@ export default {
   async fetch(request, env) {
     const url = new URL(request.url);
 
+    if (url.pathname === '/debug-worker') {
+      return new Response('Worker v3 is running! method=' + request.method + ' path=' + url.pathname, {
+        status: 200,
+        headers: { 'Content-Type': 'text/plain' },
+      });
+    }
+
     if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
       return handleContact(request, env);
     }
