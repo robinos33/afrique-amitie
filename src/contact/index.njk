@@ -21,7 +21,20 @@ activeNav: ""
 
     <!-- Formulaire -->
     <div class="lg:col-span-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl p-8 md:p-10">
-      <form method="POST" action="">
+
+      <!-- Message succès -->
+      <div id="msg-success" class="hidden mb-8 flex items-start gap-3 bg-secondary-container text-on-secondary-fixed rounded-xl px-5 py-4 text-sm font-medium">
+        <span class="material-symbols-outlined text-base mt-0.5 shrink-0" style="font-variation-settings:'FILL' 1;">check_circle</span>
+        Votre message a bien été envoyé. Nous vous répondrons dans les meilleurs délais.
+      </div>
+
+      <!-- Message erreur -->
+      <div id="msg-error" class="hidden mb-8 flex items-start gap-3 bg-error-container text-on-error-container rounded-xl px-5 py-4 text-sm font-medium">
+        <span class="material-symbols-outlined text-base mt-0.5 shrink-0">error</span>
+        Une erreur est survenue. Merci de réessayer ou de nous contacter directement par email.
+      </div>
+
+      <form id="contact-form" method="POST" action="/contact">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="nom">Nom complet</label>
@@ -36,35 +49,27 @@ activeNav: ""
         </div>
 
         <div class="mb-6">
-          <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="sujet">Sujet de la demande</label>
-          <div class="relative">
-            <select id="sujet" name="sujet"
-              class="w-full bg-surface-container rounded px-4 py-3 text-on-surface border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm appearance-none pr-10">
-              <option>Demande d'archives</option>
-              <option>Question administrative</option>
-              <option>Témoignage / souvenir</option>
-              <option>Autre</option>
-            </select>
-            <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg pointer-events-none">expand_more</span>
-          </div>
+          <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="objet">Objet</label>
+          <input type="text" id="objet" name="objet" placeholder="Ex. : demande d'archives, témoignage…" required
+            class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm"/>
         </div>
 
-        <div class="mb-8">
+        <div class="mb-6">
           <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="message">Votre message</label>
           <textarea id="message" name="message" placeholder="Comment pouvons-nous vous aider ?" rows="6" required
             class="w-full bg-surface-container rounded px-4 py-3 text-on-surface placeholder:text-on-surface-variant/40 border border-outline-variant/30 focus:outline-none focus:border-primary transition-colors text-sm resize-none"></textarea>
         </div>
 
-        <div class="relative inline-block group">
-          <button type="submit" disabled
-            class="bg-primary text-on-primary px-8 py-4 rounded font-bold uppercase tracking-widest text-sm opacity-40 cursor-not-allowed inline-flex items-center gap-3">
-            Envoyer le message
-            <span class="material-symbols-outlined text-base">arrow_forward</span>
-          </button>
-          <span class="pointer-events-none absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-inverse-surface text-inverse-on-surface text-xs font-medium px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            Site en maintenance, revenez plus tard
-          </span>
+        <!-- Cloudflare Turnstile -->
+        <div class="mb-8">
+          <div class="cf-turnstile" data-sitekey="VOTRE_TURNSTILE_SITEKEY" data-theme="light"></div>
         </div>
+
+        <button type="submit" id="submit-btn"
+          class="bg-primary text-on-primary px-8 py-4 rounded font-bold uppercase tracking-widest text-sm inline-flex items-center gap-3 hover:opacity-90 transition-opacity">
+          Envoyer le message
+          <span class="material-symbols-outlined text-base">arrow_forward</span>
+        </button>
       </form>
     </div>
 
@@ -95,3 +100,19 @@ activeNav: ""
   </div>
 
 </article>
+
+<!-- Turnstile script -->
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<!-- Gestion des retours (succès / erreur) -->
+<script>
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('sent') === '1') {
+      document.getElementById('msg-success').classList.remove('hidden');
+      document.getElementById('contact-form').classList.add('hidden');
+    } else if (params.get('error')) {
+      document.getElementById('msg-error').classList.remove('hidden');
+    }
+  })();
+</script>
