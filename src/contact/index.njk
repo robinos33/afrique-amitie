@@ -128,7 +128,7 @@ activeNav: ""
       try {
         const res = await fetch(LAMBDA_URL, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+          headers: { 'Content-Type': 'text/plain' },
           body: JSON.stringify({
             nom:     form.querySelector('[name="nom"]').value.trim(),
             email:   form.querySelector('[name="email"]').value.trim(),
