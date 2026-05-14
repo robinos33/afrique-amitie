@@ -1,6 +1,13 @@
+const fs = require("fs");
+
 module.exports = function (eleventyConfig) {
   // Copie directe des assets statiques (images, favicon, etc.) vers _site/
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+
+  // Copie worker.js → _site/_worker.js pour Cloudflare Pages Advanced Mode
+  eleventyConfig.on("eleventy.after", ({ dir }) => {
+    fs.copyFileSync("worker.js", `${dir.output}/_worker.js`);
+  });
 
 
   // Raccourci {% year %} pour afficher l'année courante (utile dans le footer)
