@@ -1,18 +1,6 @@
-export default {
-  async fetch(request, env) {
-    const url = new URL(request.url);
+export async function onRequestPost(context) {
+  const { request, env } = context;
 
-    // Formulaire de contact
-    if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
-      return handleContact(request, env);
-    }
-
-    // Tout le reste → assets statiques
-    return env.ASSETS.fetch(request);
-  },
-};
-
-async function handleContact(request, env) {
   try {
     const formData = await request.formData();
     const nom            = formData.get('nom')?.trim();

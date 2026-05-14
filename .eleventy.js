@@ -2,11 +2,6 @@ module.exports = function (eleventyConfig) {
   // Copie directe des assets statiques (images, favicon, etc.) vers _site/
   eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
 
-  // Worker Cloudflare Pages — copié comme _worker.js dans _site/
-  eleventyConfig.addPassthroughCopy({ "worker.js": "_worker.js" });
-
-  // Fichier vide requis par Cloudflare Pages pour confirmer que _worker.js est intentionnel
-  eleventyConfig.addPassthroughCopy({ "src/.assetsignore": ".assetsignore" });
 
   // Raccourci {% year %} pour afficher l'année courante (utile dans le footer)
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
