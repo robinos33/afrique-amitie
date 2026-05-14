@@ -91,7 +91,7 @@ async function handleContact(request, env) {
 }
 
 function redirect(request, path) {
-  return Response.redirect(new URL(path, request.url).toString(), 303);
+  return Response.redirect('https://afrique-amitie.fr' + path, 303);
 }
 
 function esc(str) {
