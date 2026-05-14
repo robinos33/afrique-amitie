@@ -19,34 +19,13 @@ activeNav: "notre-association"
 
   <div class="space-y-12">
 
-    <!-- Comptes rendus en ligne -->
-    <section>
-      <h2 class="font-headline text-2xl text-primary font-bold mb-6">Comptes rendus en ligne</h2>
-      <div class="grid gap-4">
-        <a href="/bulletins/expedition-fevrier-2012/"
-           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
-          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
-          <div>
-            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2012</p>
-            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — bilharziose, santé, école</p>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
-        </a>
-        <a href="/bulletins/expedition-fevrier-2014/"
-           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
-          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
-          <div>
-            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2014</p>
-            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — santé, éducation, déchets</p>
-          </div>
-          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
-        </a>
-      </div>
-    </section>
-
     <!-- Bulletins PDF -->
     <section>
-      <h2 class="font-headline text-2xl text-primary font-bold mb-6">Bulletins PDF</h2>
+      <h2 class="font-headline text-2xl text-primary font-bold mb-3">Bulletins PDF</h2>
+      <p class="text-on-surface-variant text-sm mb-6 flex items-start gap-2">
+        <span class="material-symbols-outlined text-base mt-0.5 shrink-0">info</span>
+        Nous faisons notre possible pour récupérer l'ensemble des bulletins. Certains numéros peuvent être manquants ou incomplets.
+      </p>
       <div class="grid gap-3">
 
         <a href="/assets/bulletin_15-mai2016.pdf" target="_blank"
@@ -86,6 +65,31 @@ activeNav: "notre-association"
         </a>
         {% endfor %}
 
+      </div>
+    </section>
+
+    <!-- Comptes rendus en ligne -->
+    <section>
+      <h2 class="font-headline text-2xl text-primary font-bold mb-6">Comptes rendus en ligne</h2>
+      <div class="grid gap-4">
+        <a href="/bulletins/expedition-fevrier-2012/"
+           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
+          <div>
+            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2012</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — bilharziose, santé, école</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
+        </a>
+        <a href="/bulletins/expedition-fevrier-2014/"
+           class="group flex items-center gap-4 p-5 rounded-xl border border-outline-variant/30 bg-surface-container hover:bg-surface-container-high transition-colors">
+          <span class="material-symbols-outlined text-secondary text-2xl">article</span>
+          <div>
+            <p class="font-semibold text-on-surface group-hover:text-primary transition-colors">Expédition février 2014</p>
+            <p class="text-sm text-on-surface-variant mt-0.5">Yaguiné — santé, éducation, déchets</p>
+          </div>
+          <span class="material-symbols-outlined text-on-surface-variant ml-auto">arrow_forward</span>
+        </a>
       </div>
     </section>
 
