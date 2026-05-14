@@ -15,6 +15,6 @@
     "nodejs_compat"
   ],
   "routes": [
-    { "pattern": "afrique-amitie.fr/*", "custom_domain": true }
+    { "pattern": "afrique-amitie.fr", "custom_domain": true }
   ]
 }
