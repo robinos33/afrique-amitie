@@ -15,6 +15,11 @@ module.exports = function (eleventyConfig) {
     });
   });
 
+  // Filtre ISO 8601 pour le sitemap
+  eleventyConfig.addFilter("isoDate", (date) => {
+    return new Date(date).toISOString().split("T")[0];
+  });
+
   return {
     dir: {
       input: "src",

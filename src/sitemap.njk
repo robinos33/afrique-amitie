@@ -1,0 +1,19 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- for page in collections.all %}
+{%- if page.url and page.url != "/404.html" %}
+  <url>
+    <loc>https://afrique-amitie.fr{{ page.url }}</loc>
+    {%- if page.data.date %}
+    <lastmod>{{ page.data.date | isoDate }}</lastmod>
+    {%- endif %}
+    <changefreq>{% if page.url == "/" %}monthly{% else %}yearly{% endif %}</changefreq>
+    <priority>{% if page.url == "/" %}1.0{% elif "actualites/" in page.url and page.url != "/actualites/" %}0.7{% elif "projets/" in page.url and page.url != "/projets/" %}0.7{% elif page.url == "/actualites/" or page.url == "/projets/" %}0.8{% else %}0.5{% endif %}</priority>
+  </url>
+{%- endif %}
+{%- endfor %}
+</urlset>
