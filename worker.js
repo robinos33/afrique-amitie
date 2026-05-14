@@ -1,17 +1,28 @@
-export async function onRequestPost(context) {
-  const { request, env } = context;
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
 
+    // Formulaire de contact
+    if (url.pathname === '/contact' && request.method === 'POST') {
+      return handleContact(request, env);
+    }
+
+    // Tout le reste → assets statiques
+    return env.ASSETS.fetch(request);
+  },
+};
+
+async function handleContact(request, env) {
   try {
     const formData = await request.formData();
-    const nom             = formData.get('nom')?.trim();
-    const email           = formData.get('email')?.trim();
-    const objet           = formData.get('objet')?.trim();
-    const message         = formData.get('message')?.trim();
-    const turnstileToken  = formData.get('cf-turnstile-response');
+    const nom            = formData.get('nom')?.trim();
+    const email          = formData.get('email')?.trim();
+    const objet          = formData.get('objet')?.trim();
+    const message        = formData.get('message')?.trim();
+    const turnstileToken = formData.get('cf-turnstile-response');
 
-    // Champs obligatoires
     if (!nom || !email || !objet || !message || !turnstileToken) {
-      return errorRedirect(request, 'missing_fields');
+      return redirect(request, '/contact/?error=missing_fields');
     }
 
     // Validation Turnstile
@@ -26,7 +37,7 @@ export async function onRequestPost(context) {
     });
     const tsData = await tsRes.json();
     if (!tsData.success) {
-      return errorRedirect(request, 'captcha');
+      return redirect(request, '/contact/?error=captcha');
     }
 
     // Envoi via Brevo
@@ -53,19 +64,19 @@ export async function onRequestPost(context) {
 
     if (!brevoRes.ok) {
       console.error('Brevo error:', await brevoRes.text());
-      return errorRedirect(request, 'send_failed');
+      return redirect(request, '/contact/?error=send_failed');
     }
 
-    return Response.redirect(new URL('/contact/?sent=1', request.url), 303);
+    return redirect(request, '/contact/?sent=1');
 
   } catch (err) {
     console.error(err);
-    return errorRedirect(request, 'server_error');
+    return redirect(request, '/contact/?error=server_error');
   }
 }
 
-function errorRedirect(request, code) {
-  return Response.redirect(new URL(`/contact/?error=${code}`, request.url), 303);
+function redirect(request, path) {
+  return Response.redirect(new URL(path, request.url).toString(), 303);
 }
 
 function esc(str) {
