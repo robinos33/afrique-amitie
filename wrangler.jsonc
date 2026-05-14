@@ -13,5 +13,8 @@
   },
   "compatibility_flags": [
     "nodejs_compat"
+  ],
+  "routes": [
+    { "pattern": "afrique-amitie.fr/*", "custom_domain": true }
   ]
 }
