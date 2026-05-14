@@ -1,6 +1,16 @@
-export async function onRequestPost(context) {
-  const { request, env } = context;
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
 
+    if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
+      return handleContact(request, env);
+    }
+
+    return env.ASSETS.fetch(request);
+  },
+};
+
+async function handleContact(request, env) {
   try {
     const formData = await request.formData();
     const nom            = formData.get('nom')?.trim();
@@ -13,7 +23,6 @@ export async function onRequestPost(context) {
       return redirect(request, '/contact/?error=missing_fields');
     }
 
-    // Validation Turnstile
     const tsRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -28,7 +37,6 @@ export async function onRequestPost(context) {
       return redirect(request, '/contact/?error=captcha');
     }
 
-    // Envoi via Brevo
     const brevoRes = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
