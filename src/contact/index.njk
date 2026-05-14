@@ -34,7 +34,7 @@ activeNav: ""
         Une erreur est survenue. Merci de réessayer ou de nous contacter directement par email.
       </div>
 
-      <form id="contact-form" method="POST" action="https://afrique-amitie.robin-aldasoro.workers.dev/contact/">
+      <form id="contact-form">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div>
             <label class="font-label text-xs font-semibold uppercase tracking-widest text-on-surface-variant mb-2 block" for="nom">Nom complet</label>
@@ -104,15 +104,53 @@ activeNav: ""
 <!-- Turnstile script -->
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
-<!-- Gestion des retours (succès / erreur) -->
 <script>
   (function () {
-    const params = new URLSearchParams(window.location.search);
-    if (params.get('sent') === '1') {
-      document.getElementById('msg-success').classList.remove('hidden');
-      document.getElementById('contact-form').classList.add('hidden');
-    } else if (params.get('error')) {
-      document.getElementById('msg-error').classList.remove('hidden');
-    }
+    const LAMBDA_URL = 'https://nsserenehugleopkq4y3g-fct-elated-meninsky.functions.fnc.fr-par.scw.cloud/';
+    const form      = document.getElementById('contact-form');
+    const btnSubmit = document.getElementById('submit-btn');
+    const msgOk     = document.getElementById('msg-success');
+    const msgErr    = document.getElementById('msg-error');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const turnstileToken = form.querySelector('[name="cf-turnstile-response"]')?.value;
+      if (!turnstileToken) {
+        msgErr.classList.remove('hidden');
+        return;
+      }
+
+      btnSubmit.disabled = true;
+      btnSubmit.style.opacity = '0.6';
+      msgErr.classList.add('hidden');
+
+      try {
+        const res = await fetch(LAMBDA_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nom:     form.querySelector('[name="nom"]').value.trim(),
+            email:   form.querySelector('[name="email"]').value.trim(),
+            objet:   form.querySelector('[name="objet"]').value.trim(),
+            message: form.querySelector('[name="message"]').value.trim(),
+            turnstileToken,
+          }),
+        });
+
+        if (res.ok) {
+          form.classList.add('hidden');
+          msgOk.classList.remove('hidden');
+        } else {
+          throw new Error('server error ' + res.status);
+        }
+      } catch (err) {
+        msgErr.classList.remove('hidden');
+        btnSubmit.disabled = false;
+        btnSubmit.style.opacity = '';
+        // Réinitialise le widget Turnstile pour permettre une nouvelle tentative
+        if (window.turnstile) turnstile.reset();
+      }
+    });
   })();
 </script>
