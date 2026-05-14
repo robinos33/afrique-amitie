@@ -3,7 +3,7 @@ export default {
     const url = new URL(request.url);
 
     // Formulaire de contact
-    if (url.pathname === '/contact' && request.method === 'POST') {
+    if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
       return handleContact(request, env);
     }
 
