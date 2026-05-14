@@ -1,19 +1,31 @@
 export default {
   async fetch(request, env) {
-    const url = new URL(request.url);
+    try {
+      const url = new URL(request.url);
 
-    if (url.pathname === '/debug-worker') {
-      return new Response('Worker v3 is running! method=' + request.method + ' path=' + url.pathname, {
-        status: 200,
+      if (url.pathname === '/debug-worker') {
+        return new Response(JSON.stringify({
+          v: 4,
+          method: request.method,
+          pathname: url.pathname,
+          hasAssets: !!env.ASSETS,
+        }), {
+          status: 200,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
+
+      if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
+        return handleContact(request, env);
+      }
+
+      return env.ASSETS.fetch(request);
+    } catch (err) {
+      return new Response('Worker error: ' + err.message, {
+        status: 500,
         headers: { 'Content-Type': 'text/plain' },
       });
     }
-
-    if ((url.pathname === '/contact' || url.pathname === '/contact/') && request.method === 'POST') {
-      return handleContact(request, env);
-    }
-
-    return env.ASSETS.fetch(request);
   },
 };
 
