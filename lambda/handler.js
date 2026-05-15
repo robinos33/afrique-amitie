@@ -82,8 +82,7 @@ export const handle = async (event) => {
 
   if (!brevoRes.ok) {
     const err = await brevoRes.text();
-    console.error('Brevo error:', err);
-    return respond(500, { error: 'Erreur lors de l\'envoi' });
+    return respond(500, { error: 'Brevo: ' + err });
   }
 
   return respond(200, { ok: true });
