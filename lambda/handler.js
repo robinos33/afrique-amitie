@@ -20,7 +20,7 @@ function esc(str) {
     .replace(/"/g, '&quot;');
 }
 
-module.exports.handle = async (event) => {
+export const handle = async (event) => {
   // Preflight CORS
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers: CORS, body: '' };
