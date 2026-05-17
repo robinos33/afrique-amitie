@@ -6,6 +6,7 @@
   "scripts": {
     "start": "concurrently \"tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/main.css --watch\" \"eleventy --serve --port=3000\"",
     "build": "tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/main.css && eleventy",
+    "deploy": "npm run build && npx wrangler deploy",
     "clean": "rm -rf _site"
   },
   "devDependencies": {
