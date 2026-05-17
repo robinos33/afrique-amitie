@@ -4,11 +4,15 @@
   "description": "Site statique de l'association Afrique Amitié — héritage 1994-2026.",
   "private": true,
   "scripts": {
-    "start": "eleventy --serve --port=3000",
-    "build": "eleventy",
+    "start": "concurrently \"tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/main.css --watch\" \"eleventy --serve --port=3000\"",
+    "build": "tailwindcss -i ./src/assets/css/input.css -o ./src/assets/css/main.css && eleventy",
     "clean": "rm -rf _site"
   },
   "devDependencies": {
-    "@11ty/eleventy": "^3.0.0"
+    "@11ty/eleventy": "^3.0.0",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.11",
+    "concurrently": "^9.2.1",
+    "tailwindcss": "^3.4.19"
   }
 }

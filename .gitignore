@@ -15,6 +15,7 @@ build/
 
 # Tailwind (si compilation locale)
 *.css.map
+src/assets/css/main.css
 
 # Environnement
 .env
